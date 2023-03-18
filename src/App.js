@@ -26,7 +26,8 @@ const App = () => {
   const [videoTitle, setVideoTitle] = useState('Loading...');
   const [output, setOutput] = useState([]);
   const [linkValue, setLinkValue] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   const handleTyping = (e) => {
     setLinkValue(e.target.value)
   }
@@ -49,9 +50,9 @@ const App = () => {
           if (response.data.status === "fail") {
             handleError(response.data.error);
           } else {
+            setOutput(response.data.adaptiveFormats);
             setVideoTitle(response.data.title);
             setImgPath(response.data.thumbnail[1]?.url);
-            setOutput(response.data.adaptiveFormats);
           }
           setLoading(false);
           document.querySelector('.container').style.height = "100%";

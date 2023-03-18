@@ -20,16 +20,9 @@
 
 body {
     background-color: #8a8a8a;
-    background-image:
-        radial-gradient(circle at 20% 20%, #f88a8a 10%, transparent 11%),
-        radial-gradient(circle at 50% 70%, #8dfe13 10%, transparent 11%),
-        radial-gradient(circle at 80% 20%, #1efff4 10%, transparent 11%),
-        radial-gradient(circle at 60% 30%, #0f6bff 10%, transparent 11%),
-        radial-gradient(circle at 30% 80%, #a11dfe 10%, transparent 11%),
-        radial-gradient(circle at 90% 70%, #efff16 10%, transparent 11%),
-        radial-gradient(circle at 10% 50%, #fe31d5 10%, transparent 11%),
-        radial-gradient(circle at 50% 50%, #bebebe, #acacac, #989898, #888888);
-    background-size: 100vw 100vh;
+    background-image: url(Components/images/BackgroundIMG.jpg);
+    background-position: center;
+    background-size: cover;
     background-attachment: fixed;
     width: 100%;
     height: 100vh;
@@ -69,8 +62,8 @@ input[type="text"] {
     height: 1px;
     border-top: 1px solid white;
     border-left: 1px solid white;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
     margin: 0;
     transition: height 1s ease-in;
     overflow-y: hidden;
