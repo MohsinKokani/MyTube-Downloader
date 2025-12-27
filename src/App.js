@@ -50,7 +50,10 @@ const App = () => {
           if (response.data.status === "fail") {
             handleError(response.data.error);
           } else {
-            setOutput(response.data.adaptiveFormats);
+            // Combine formats (with audio) first, then adaptiveFormats
+            const formats = response.data.formats || [];
+            const adaptiveFormats = response.data.adaptiveFormats || [];
+            setOutput([...formats, ...adaptiveFormats]);
             setVideoTitle(response.data.title);
             setImgPath(response.data.thumbnail[1]?.url);
           }
