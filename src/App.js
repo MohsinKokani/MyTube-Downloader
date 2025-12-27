@@ -65,6 +65,8 @@ const App = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [imgPath, setImgPath] = useState(NullIMG);
   const [videoTitle, setVideoTitle] = useState('Loading...');
+  const [lengthSeconds, setLengthSeconds] = useState(null);
+  const [viewCount, setViewCount] = useState(null);
   const [output, setOutput] = useState([]);
   const [linkValue, setLinkValue] = useState('');
   const [loading, setLoading] = useState(false);
@@ -92,6 +94,8 @@ const App = () => {
   const handleError = (message) => {
     setVideoTitle(message);
     setImgPath(NullIMG);
+    setLengthSeconds(null);
+    setViewCount(null);
     setOutput([]);
     setLoading(false);
     document.querySelector('.container').style.height = "100%";
@@ -114,6 +118,8 @@ const App = () => {
             setOutput([...formats, ...adaptiveFormats]);
             setVideoTitle(response.data.title);
             setImgPath(response.data.thumbnail[1]?.url);
+            setLengthSeconds(response.data.lengthSeconds);
+            setViewCount(response.data.viewCount);
           }
           setLoading(false);
           document.querySelector('.container').style.height = "100%";
@@ -135,7 +141,12 @@ const App = () => {
       </div>
 
       <div className="container">
-        <VideoDetails videoTitle={videoTitle} imgPath={imgPath} />
+        <VideoDetails 
+          videoTitle={videoTitle} 
+          imgPath={imgPath} 
+          lengthSeconds={lengthSeconds}
+          viewCount={viewCount}
+        />
         {
           loading &&
           <img width="80px" src={Loader} alt="Loading..." />
